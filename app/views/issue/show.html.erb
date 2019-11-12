@@ -1,0 +1,52 @@
+<style>
+    body {
+        text-align: center;
+    }
+    .body {
+        width: 80%;
+        min-width: 600px;
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .row {
+        width: 100%;
+    }
+    .success {
+        width: 50%;
+        margin: 10px auto;
+        color: white;
+        background-color: green;
+        height: 10px;
+    }
+</style>
+<div class="body">
+    <% if @success %>
+        <div class="success">Success!<div>
+    <% end %>
+    <% if @errors.present? %>
+        <div class="errors"><%= @errors %></div>
+    <% end %>
+    <h2>GitHub Issue Creator</h2>
+    <form action="/issue/new" method="post">
+        <div class="row">
+            <label type="text" readonly>Repo Author:</label>
+            <input type="text" name="author"></input>
+        </div>
+        <div class="row">
+            <label>Repo Name:</label>
+            <input type="type" name="repo"></input>
+        </div>
+        <br />
+        <div class="row">
+            <label>Issue Title:</label>
+            <input type="text" name="title"></input>
+        </div>
+        <div class="row">
+            <label>Issue Body:</label><br />
+            <textarea rows="50" cols="100" name="body"><%= @body %></textarea>
+        </div>
+        <input type="submit" text="create"></input>
+    </form>
+<div>
